@@ -28,9 +28,7 @@ export async function loremIpsum(params: Options) {
   // So we can just add onto the link without worrying about the order, like so:
 
   for (let property in params) {
-    // I was having trouble on this one, so screw it - I'm ignoring types.
-    // @ts-ignore
-    if (params[property] == true) { // Only allow positive boolean values.
+    if (params[property as keyof Options] == true) {
       url += `/${property}`;
     }
   }
